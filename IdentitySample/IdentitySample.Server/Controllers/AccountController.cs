@@ -31,6 +31,10 @@ public class AccountController : Controller
     {
         var identity = new ClaimsIdentity(authenticationScheme);
         identity.AddClaim(new Claim(ClaimTypes.Name, userName));
+        identity.AddClaim(new Claim(ClaimTypes.Email, "email@email.com"));
+        identity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
+        identity.AddClaim(new Claim(ClaimTypes.Role, "CanEditUsers"));
+
 
         var properties = new AuthenticationProperties();
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), properties);

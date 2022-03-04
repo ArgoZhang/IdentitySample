@@ -43,7 +43,8 @@ namespace IdentitySample.Shared.Shared
                 new MenuItem() { Text = "Counter", Icon = "fa fa-fw fa-check-square-o", Url = "/counter" },
                 new MenuItem() { Text = "FetchData", Icon = "fa fa-fw fa-database", Url = "fetchdata" },
                 new MenuItem() { Text = "Table", Icon = "fa fa-fw fa-table", Url = "table" },
-                new MenuItem() { Text = "花名册", Icon = "fa fa-fw fa-users", Url = "users" }
+                new MenuItem() { Text = "花名册", Icon = "fa fa-fw fa-users", Url = "users" },
+                new MenuItem() { Text = "UserDetails", Icon = "fa fa-fw fa-users", Url = "/userdetails" }
             };
 
             return menus;

@@ -12,6 +12,9 @@ builder.Services.AddBootstrapBlazor();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 builder.Services.AddAuthorization();
 
+builder.Services.AddHttpContextAccessor();
+
+
 builder.Services.AddSingleton<WeatherForecastService>();
 
 // 增加 Table 数据服务操作类
