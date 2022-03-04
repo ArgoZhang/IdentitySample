@@ -1,10 +1,7 @@
 ﻿@page "/userdetails"
-@using Microsoft.AspNetCore.Http
 @attribute [TabItemOption(Text = "UserDetails")]
-@inject IHttpContextAccessor httpContextAccessor
 
 <h3>UserDetails</h3>
-
 
 <AuthorizeView Roles="admin">
     <p>You can only see this if you're in the role "admin".</p>
@@ -19,16 +16,25 @@
 
 @code {
 
-    public string UserClaims { get; set; }
-    public string UserName { get; set; }
+    public string? UserClaims { get; set; }
+    public string? UserName { get; set; }
 
+    [Inject]
+    [NotNull]
+    private AuthenticationStateProvider? AuthenticationStateProvider { get; set; }
+
+    /// <summary>
+    ///
+    /// </summary>
+    /// <returns></returns>
     protected override async Task OnInitializedAsync()
     {
-        var user = httpContextAccessor.HttpContext.User;
-        UserName = user.Identity.Name;
-        foreach (var item in user.Claims)
+        var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        UserName = state.User.Identity?.Name;
+
+        foreach (var claim in state.User.Claims)
         {
-            UserClaims = UserClaims + item.Type + "*" + item.Value + "*\r\n";
+            UserClaims = UserClaims + claim.Type + "*" + claim.Value + "*\r\n";
         }
     }
 }

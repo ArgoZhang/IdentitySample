@@ -17,7 +17,10 @@
 
   <ItemGroup>
     <PackageReference Include="BootstrapBlazor" Version="6.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="System.Diagnostics.CodeAnalysis" />
   </ItemGroup>
 
 </Project>

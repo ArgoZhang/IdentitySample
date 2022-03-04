@@ -1,6 +1,5 @@
 ﻿using IdentitySample.Shared.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,9 +10,6 @@ builder.Services.AddBootstrapBlazor();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 builder.Services.AddAuthorization();
-
-builder.Services.AddHttpContextAccessor();
-
 
 builder.Services.AddSingleton<WeatherForecastService>();
 
